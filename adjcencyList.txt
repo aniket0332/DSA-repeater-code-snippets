@@ -1,0 +1,30 @@
+ HashMap<Integer,List<Integer>> adj = createAdj(edges);
+
+ HashMap<Integer,List<Integer>> createAdj(int[][] edges)
+   {
+     HashMap<Integer,List<Integer>> adj = new HashMap<>();
+     for(int i=0;i<edges.length;i++)
+     {
+        if(adj.get(edges[i][0])==null)
+        {
+            List<Integer> l = new ArrayList<>();
+            l.add(edges[i][1]);
+            adj.put(edges[i][0],l);
+        }
+        else{
+            adj.get(edges[i][0]).add(edges[i][1]);
+        }
+
+        if(adj.get(edges[i][1])==null)
+        {
+            List<Integer> l = new ArrayList<>();
+            l.add(edges[i][0]);
+            adj.put(edges[i][1],l);
+        }
+        else{
+            adj.get(edges[i][1]).add(edges[i][0]);
+        }
+
+     }
+     return adj;
+   }
